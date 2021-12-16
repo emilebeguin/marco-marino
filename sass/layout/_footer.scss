@@ -1,0 +1,9 @@
+nav.social-links {
+    @include flex-auto($direction: row, $justify: flex-start);
+    margin: -4.3em 0;
+    z-index: 5;
+    position: relative;
+    @include resize (tablet) {
+        display: none;
+    }
+} 

@@ -1,0 +1,53 @@
+body.home {
+   .waves {
+        position: fixed;
+        z-index: -999;
+        transform: translateY(-50%);
+        top: 50%;
+        right: 0;
+        left: 0;
+        width: 100%;
+    }
+    main {
+        height: $full-height;
+        animation: slide-up 1s ease-out;
+        .welcome-text {
+            width: 100%;
+            @include flex-auto ($direction: column, $align: baseline);
+            flex-wrap: wrap;
+            align-content: center;
+            height: auto;
+            h1 {
+                font-size: 7vmax;
+                font-weight: 300;
+                width: 6em;
+                line-height: 0.8em;
+                margin: 0.2em 0;
+                &::after {
+                    content: '—';
+                    margin-left: 0.15em;
+                }
+            }
+            .motto {
+                width: 6em;
+                line-height: 1.25em;
+            }
+            .explore {
+                margin-left: 1em;
+                width: 30%;
+                display: flex;
+                flex-flow: column;
+                justify-content: center;
+                align-items: flex-end;
+                p::before {
+                    content: '—';
+                    height: 100%;
+                }
+                @include resize (tablet) {
+                    display: none;
+                }
+                height: 100%;
+            }
+        }
+    }
+}

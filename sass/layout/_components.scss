@@ -1,0 +1,29 @@
+@keyframes slide-right {
+    0%    { transform: translateX(0%); }
+    100%  { transform: translateX(100%); }
+}
+
+@keyframes slide-up {
+    0%    {
+        opacity: 0;
+        transform: translateY(20%);
+    }
+    75% {
+        opacity: 0.25;
+        transform: translateX(0%);
+    }
+    100%  {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+}
+
+
+body {
+    position: relative;
+    overflow-x: hidden;
+    @include overlay-before ($z-index: 5, $opacity: 1, $bg: #222) {
+        transform: translateX(100%);
+        animation: slide-right 1s ease-out;
+    }
+}

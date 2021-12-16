@@ -1,0 +1,68 @@
+.contact {
+    .clickout {
+        width: calc(100% - 600px);
+        height: 100%;
+        background-color: #111;
+        opacity: 0;
+    }
+    @include flex-auto;
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    form {
+        width: 600px;
+        height: 100%;
+        background-color: #111;
+        padding: 25px;
+        @include flex-auto ($direction: column);
+        h2 {
+            font-weight: normal;
+            font-size: 48px;
+            font-size: 34px;
+            margin: 1em 0 auto;
+        }
+        div {
+            width: 100%;
+            display: flex;
+            box-sizing: border-box;
+        }
+        input, textarea {
+            display: block;
+            font: inherit;
+            width: 100%;
+            margin: 10px;
+            padding: 1em;
+            border: none;
+            background-color: #2c2c2c;
+            color: #555;
+            resize: vertical;
+            outline: none;
+            ::placeholder {
+                color: #555;
+            }
+        }
+        .name {
+            @include flex-auto;
+            input {
+                width: 50%;
+            }
+        }
+        .submit {
+            margin-bottom: auto;
+            input, button {
+                @include button ($color: #fff);
+                display: block;
+                cursor: pointer;
+                &.cv {
+                    border: 0;
+                }
+            }
+
+        }
+
+    }
+}
+.contact.hidden {
+    display: none;
+}

@@ -1,0 +1,90 @@
+main.projects {
+    @include flex-auto;
+    width: 100%;
+    .project-thumbnail {
+        position: relative;
+        height: 100%;
+        width: 25%;
+        height: $max-screen-height;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        z-index: 0;
+        a {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            & * {
+                z-index: 2;
+            }
+            .sub {
+                font-size: xx-small;
+                text-transform: uppercase;
+            }
+            h2, p{
+                cursor: pointer;
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                width: 100%;
+                z-index: -1;
+                height: 0;
+                background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;
+                opacity: 0;
+                @include transition-eclair($scope: opacity);
+            }
+            &:hover {
+                &::after {
+                    height: $max-screen-height;
+                    transform: translateY(-50%);
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .project-thumbnail:nth-of-type(1) a {
+        &::after {
+            background-image: url(../img/annabelle.jpg);
+        }
+    }
+    .project-thumbnail:nth-of-type(2) a {
+        &::after {
+            background-image: url(../img/decathlon.png);
+        }
+    }
+    .project-thumbnail:nth-of-type(3) a {
+        &::after { 
+            background-image: url(../img/eventoxtra-header.jpg);
+        }
+    }
+    .project-thumbnail:nth-of-type(4) a {
+        &::after { 
+            background-image: url(../img/flako.jpg);
+        }
+    }
+    @include resize (tablet) {
+        flex-direction: column;
+        .project-thumbnail {
+            width: 100%;
+            a {
+                font-size: 200%;
+                .sub {
+                    margin-top: 1em;
+                    font-size: small
+                }
+                &::after {
+                    height: $max-screen-height;
+                    transform: translateY(-50%);
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

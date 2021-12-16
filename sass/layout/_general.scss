@@ -1,0 +1,39 @@
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    @include button ($color: #fff);
+    cursor: pointer;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: $max-screen-height;
+}
+
+main {
+    @include flex-auto ($direction: column);
+    line-height: 2em;
+    h3, h4 {
+        text-transform: uppercase;
+        font-weight: normal;
+        margin: 0 0 2em;
+    }
+    p {
+        margin: 0 0 2em;
+    }
+}
+
+aside {
+    position: fixed;
+    top: 50%;
+    right: 0%;
+    transform: translateY(-50%);
+    background-color: #f94;
+}

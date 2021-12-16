@@ -1,0 +1,18 @@
+header {
+    position: relative;
+    .main-nav {
+        width: 100%;
+        position: absolute;
+        @include flex-auto($direction: row-reverse, $justify: flex-start);
+        @include resize (tablet) {
+            background-color: #444;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            .site-title {
+                width: 100%;
+                order: -1;
+                text-align: center;
+            }
+        }
+    }
+}

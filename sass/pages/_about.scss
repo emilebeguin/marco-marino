@@ -1,0 +1,52 @@
+body.about {
+    height: fit-content;
+    main.about {
+        margin: 100px auto;
+        max-width: 940px;
+        @include resize (tablet) { margin: 0 0 300px }
+        .pic {
+            @include flex-auto;
+            border-radius: 10px;
+            width: fit-content;
+            overflow: hidden;
+            max-height: auto;
+            margin-bottom: 80px;
+            img {
+                display: block;
+                width: 100%;
+            }
+            @include resize (tablet) {
+                border-radius: 0;
+                max-height: $max-screen-height;
+                img {
+                    width: 150%;
+                }
+            }
+        }
+        .about-text {
+            display: flex;
+            flex-flow: column wrap;
+            max-height: 660px;
+            &>* {
+                width: 50%;
+            }
+            li {
+                list-style: none;
+            }
+            .intro-text {
+                height: 100%;
+            }
+            button.view {
+                border: 0;
+            }
+            @include resize (tablet) {
+                display: flex;
+                flex-flow: column nowrap;
+                margin: 1em;
+                &>* {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

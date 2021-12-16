@@ -1,0 +1,130 @@
+// mixin de transitions
+@mixin transition-eclair($scope: all, $duree: .3s, $delai: 0s) {
+    transition: $scope $duree ease-in-out $delai;
+}
+
+//flexer et centrer
+@mixin flex-auto ($direction: row, $justify: center, $align: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+//cover video
+@mixin cover-video () {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    left: 0;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+//button
+@mixin button ($border-style: solid 1px, $border-radius: 0, $padding: 1em 1.5em, $color: #333) {
+    border: $border-style $color;
+    border-radius: $border-radius;
+    padding: $padding;
+    background-color: transparent;
+    text-decoration: none;
+    color: $color;
+    box-sizing: border-box;
+    width: fit-content;
+}
+
+// overlay after
+@mixin overlay-after ($bg: #333, $opacity: .3, $z-index: -1) {
+    z-index: $z-index;
+    &::after {
+        background: $bg;
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        opacity: $opacity;
+        z-index: $z-index + 1;
+    }
+}
+
+// overlay before
+@mixin overlay-before ($bg: #333, $opacity: .3, $z-index: -1) {
+    z-index: $z-index;
+    &::before {
+        background: $bg;
+        position: absolute;
+        content: '';
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: $opacity;
+        z-index: $z-index + 2;
+        @content;
+    }
+}
+
+
+//carre 
+@mixin carre ($size: 150px) {
+    width: $size;
+    height: $size;
+}
+
+//cercle 
+@mixin cercle ($size: 150px) {
+    border-radius: 50%;
+    @include carre($size);
+}
+
+
+//nav
+@mixin nav-fixe ($background-color: #333, $color: #fff, $direction: row, $justify-content: space-around, $fixed: true) {
+    background-color: $background-color;
+
+    @if $fixed {
+        position: fixed;
+        top: 0;
+        right: 0;
+    } @else {
+        position: static;
+    }
+    width: 100%;
+    height: 2em;
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: center;
+    a {
+        display: block;
+        text-decoration: none;
+        color: $color;
+    }
+}
+
+// @mixin onParentHover() {
+//     $rootString: #{&};
+//     $parentIndex: str-index($rootString, " ");
+//     $parent: str_slice($rootString, 0, $parentIndex - 1);
+//     $children: str_slice($rootString, $parentIndex);
+  
+//     @at-root #{$parent}:hover #{$children} {
+//         @content;
+//     }
+// }
+
+@mixin resize ($media-name) {
+    @if $media-name == tablet {
+        @media only screen and (max-width: 990px) {
+            @content;
+        }
+    }
+    @if $media-name == mobile {
+        @media only screen and (max-width: 600px) {
+            @content;
+        }
+    }
+}
